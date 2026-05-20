@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import { contact } from "@/lib/content";
 
 export default function Footer() {
   return (
@@ -28,17 +29,17 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li>
               <a
-                href="https://instagram.com/innerdrive.program"
+                href={contact.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-brand-red"
               >
-                Instagram · @innerdrive.program
+                Instagram · {contact.instagramHandle}
               </a>
             </li>
             <li>
-              <a href="mailto:hola@innerdrive.program" className="hover:text-brand-red">
-                hola@innerdrive.program
+              <a href={`mailto:${contact.email}`} className="hover:text-brand-red">
+                {contact.email}
               </a>
             </li>
           </ul>

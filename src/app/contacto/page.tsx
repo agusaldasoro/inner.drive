@@ -1,5 +1,5 @@
 import ContactForm from "@/components/ContactForm";
-import { plans } from "@/lib/content";
+import { contact, plans } from "@/lib/content";
 
 export const metadata = { title: "Contacto" };
 
@@ -18,8 +18,8 @@ export default function ContactoPage() {
           </p>
 
           <div className="mt-10 space-y-5 text-sm text-white/80">
-            <Row label="Instagram" value="@innerdrive.program" href="https://instagram.com/innerdrive.program" />
-            <Row label="Email" value="hola@innerdrive.program" href="mailto:hola@innerdrive.program" />
+            <Row label="Instagram" value={contact.instagramHandle} href={contact.instagramUrl} />
+            <Row label="Email" value={contact.email} href={`mailto:${contact.email}`} />
             <Row label="Modalidad" value="100% online · Desde cualquier lugar" />
           </div>
         </div>

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
-// Lightweight contact handler. Replace the console log with DB persistence
-// and notifications when backend integrations are added.
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function POST(req: Request) {
   let payload: unknown;
   try {
@@ -14,7 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Invalid payload" }, { status: 400 });
   }
 
-  const { name, email, message } = payload as Record<string, unknown>;
+  const { name, email, plan, message } = payload as Record<string, unknown>;
   if (!name || !email || !message) {
     return NextResponse.json(
       { ok: false, error: "Missing required fields" },
@@ -22,7 +23,24 @@ export async function POST(req: Request) {
     );
   }
 
-  console.log("[inner-drive] new contact:", payload);
+  try {
+    await resend.emails.send({
+      from: "Inner Drive <onboarding@resend.dev>",
+      to: process.env.CONTACT_EMAIL!,
+      replyTo: String(email),
+      subject: `Nueva consulta de ${name}`,
+      text: [
+        `Nombre: ${name}`,
+        `Email: ${email}`,
+        `Plan: ${plan || "No especificado"}`,
+        ``,
+        `Mensaje:`,
+        String(message),
+      ].join("\n"),
+    });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Email send failed" }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

@@ -17,8 +17,9 @@ export default function ContactForm({ plans }: { plans: PlanOption[] }) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("sending");
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    const data = Object.fromEntries(new FormData(form).entries());
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -26,7 +27,7 @@ export default function ContactForm({ plans }: { plans: PlanOption[] }) {
         body: JSON.stringify(data),
       });
       setStatus(res.ok ? "ok" : "error");
-      if (res.ok) e.currentTarget.reset();
+      if (res.ok) form.reset();
     } catch {
       setStatus("error");
     }
@@ -44,9 +45,9 @@ export default function ContactForm({ plans }: { plans: PlanOption[] }) {
           name="plan"
           value={selectedPlan}
           onChange={(e) => setSelectedPlan(e.target.value)}
-          className="mt-2 w-full border border-white/10 bg-brand-ink px-4 py-3 text-sm text-white focus:border-brand-red focus:outline-none"
+          className={`mt-2 w-full border border-white/10 bg-brand-ink px-4 py-3 text-sm focus:border-brand-red focus:outline-none ${selectedPlan ? "text-white" : "text-white/30"}`}
         >
-          <option value="">Seleccioná un plan</option>
+          <option value="" disabled>Seleccioná un plan</option>
           {plans.map((p) => (
             <option key={p.slug} value={p.slug}>
               {p.name}

@@ -1,6 +1,12 @@
 // Static content for now. When the DB lands, swap these for fetchers
 // (e.g. Supabase / Postgres) — the page components consume the same shape.
 
+export const contact = {
+  instagramHandle: "@innerdrive.program",
+  instagramUrl: "https://instagram.com/innerdrive.program",
+  email: "innerdriveprogram@gmail.com",
+};
+
 export type Plan = {
   slug: string;
   name: string;

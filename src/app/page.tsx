@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { plans } from "@/lib/content";
 
 export default function HomePage() {
@@ -6,6 +7,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Pillars />
+      <ActionStrip />
       <PlansPreview />
       <CTA />
     </>
@@ -18,10 +20,6 @@ function Hero() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-brand-grid bg-grid opacity-60"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 top-1/2 h-[480px] w-[480px] -translate-y-1/2 rounded-full bg-brand-red/15 blur-3xl"
       />
       <div className="container-x relative grid gap-12 py-24 md:py-32 lg:grid-cols-[1.2fr,1fr] lg:items-center">
         <div>
@@ -50,19 +48,25 @@ function Hero() {
           </p>
         </div>
 
-        <div className="relative hidden lg:block">
-          <div className="aspect-square w-full border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent" />
-          <div className="absolute inset-6 flex flex-col justify-between">
-            <span className="self-end text-xs uppercase tracking-widest text-white/40">
-              Inner Drive · Programa
-            </span>
-            <div>
-              <p className="font-display text-6xl text-white/90">5</p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-white/60">
-                planes · un solo objetivo
-              </p>
-            </div>
-          </div>
+        {/* Hero photo — both coaches at Semifinals, melted into the background */}
+        <div className="relative hidden overflow-hidden rounded-sm lg:block" style={{ aspectRatio: "3/4" }}>
+          <Image
+            src="/Ale-002.jpg"
+            alt="Alexia y Nacho en Semifinals"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "62% 25%" }}
+            sizes="40vw"
+          />
+          {/* Fade left → blends into page background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-ink via-brand-ink/30 to-transparent" />
+          {/* Fade bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/80 via-transparent to-transparent" />
+          {/* Fade top */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 to-transparent" />
+          {/* General dark tint so colours don't pop too much */}
+          <div className="absolute inset-0 bg-brand-ink/20" />
         </div>
       </div>
     </section>
@@ -105,6 +109,41 @@ function Pillars() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function ActionStrip() {
+  const photos = [
+    { src: "/Ale-003.jpg", alt: "Alexia en competencia", pos: "60% 20%" },
+    { src: "/Nacho-002.jpg", alt: "Nacho en competencia", pos: "50% 30%" },
+    { src: "/Nacho-003.jpg", alt: "Nacho en competencia", pos: "50% 25%" },
+  ];
+  return (
+    <section className="border-b border-white/5">
+      <div className="grid h-64 grid-cols-3 overflow-hidden sm:h-80 lg:h-96">
+        {photos.map(({ src, alt, pos }, i) => (
+          <div key={src} className="relative overflow-hidden">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover brightness-50 saturate-[0.25]"
+              style={{ objectPosition: pos }}
+              sizes="33vw"
+            />
+            {/* Extra fade on the outer edges to blend with page */}
+            {i === 0 && (
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-ink/80 to-transparent" />
+            )}
+            {i === photos.length - 1 && (
+              <div className="absolute inset-0 bg-gradient-to-l from-brand-ink/80 to-transparent" />
+            )}
+            {/* Top + bottom fades */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-ink/60 via-transparent to-brand-ink/60" />
+          </div>
+        ))}
       </div>
     </section>
   );

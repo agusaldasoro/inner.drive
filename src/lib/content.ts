@@ -32,6 +32,8 @@ export type Coach = {
   role: string;
   bio: string;
   bullets: string[];
+  image: string;
+  imagePosition: string;
 };
 
 export const plans: Plan[] = [
@@ -175,8 +177,10 @@ export const coaches: Coach[] = [
     bullets: [
       "+9 años en CrossFit",
       "Games · Semifinals · Sanctionals",
-      "+5 años coach (online y presencial)",
+      "+3 años coach (online & presencial)",
     ],
+    image: "/Ale-001.jpg",
+    imagePosition: "50% 60%",
   },
   {
     name: "Nacho",
@@ -186,7 +190,9 @@ export const coaches: Coach[] = [
       "+11 años en CrossFit",
       "Semifinals · Sanctionals",
       "Profesor de Educación Física",
-      "+5 años como planificador",
+      "+5 coach y planificador",
     ],
+    image: "/Nacho-001.jpg",
+    imagePosition: "50% 44%",
   },
 ];

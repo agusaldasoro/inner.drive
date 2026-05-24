@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { coaches } from "@/lib/content";
 
 export const metadata = { title: "Quiénes somos" };
@@ -16,32 +17,47 @@ export default function QuienesSomosPage() {
           exactamente lo que se necesita para mejorar.
         </p>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-white/10 md:grid-cols-2">
+        <div className="mt-16 grid gap-px bg-white/10 md:grid-cols-2">
           {coaches.map((c) => (
-            <article key={c.name} className="bg-brand-panel p-8 md:p-10">
-              <div className="flex items-baseline justify-between">
-                <h2 className="font-display text-4xl uppercase tracking-wider">
-                  {c.name}
-                </h2>
-                <span className="text-xs uppercase tracking-widest text-brand-red">
-                  {c.role}
-                </span>
+            <article key={c.name} className="overflow-hidden bg-brand-panel">
+              {/* Photo */}
+              <div className="relative h-[480px] overflow-hidden">
+                <Image
+                  src={c.image}
+                  alt={c.name}
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: c.imagePosition }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-panel to-transparent" />
               </div>
-              <p className="mt-4 text-white/80">{c.bio}</p>
-              <ul className="mt-6 space-y-2 text-sm">
-                {c.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3">
-                    <span className="mt-2 inline-block h-px w-6 bg-brand-red" />
-                    <span className="text-white/80">{b}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Content */}
+              <div className="p-8 md:p-10">
+                <div className="flex items-baseline justify-between">
+                  <h2 className="font-display text-4xl uppercase tracking-wider">
+                    {c.name}
+                  </h2>
+                  <span className="text-xs uppercase tracking-widest text-brand-red">
+                    {c.role}
+                  </span>
+                </div>
+                <p className="mt-4 text-white/80">{c.bio}</p>
+                <ul className="mt-6 space-y-2 text-sm">
+                  {c.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-3">
+                      <span className="mt-2 inline-block h-px w-6 bg-brand-red" />
+                      <span className="text-white/80">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
         </div>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-sm bg-white/10 sm:grid-cols-3">
-          <Stat label="Años entrenando atletas" value="10+" />
+          <Stat label="Años entrenando atletas" value="8+" />
           <Stat label="Atletas online" value="100+" />
           <Stat label="Apariciones en Semifinales" value="Múltiples" />
         </div>

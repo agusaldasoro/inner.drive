@@ -19,7 +19,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li><Link href="/planes" className="hover:text-brand-red">Planes</Link></li>
             <li><Link href="/quienes-somos" className="hover:text-brand-red">Quiénes somos</Link></li>
-            <li><Link href="/contacto" className="hover:text-brand-red">Contacto</Link></li>
+            <li><Link href="/como-empezar" className="hover:text-brand-red">Cómo empezar</Link></li>
           </ul>
         </div>
         <div>

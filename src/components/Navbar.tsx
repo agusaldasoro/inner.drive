@@ -8,7 +8,6 @@ const links = [
   { href: "/", label: "Inicio" },
   { href: "/planes", label: "Planes" },
   { href: "/quienes-somos", label: "Quiénes somos" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {

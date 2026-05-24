@@ -7,5 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/planes`, priority: 0.9 },
     { url: `${base}/quienes-somos`, priority: 0.7 },
     { url: `${base}/contacto`, priority: 0.8 },
+    { url: `${base}/como-empezar`, priority: 0.8 },
   ];
 }

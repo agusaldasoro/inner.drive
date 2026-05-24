@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { plans, type Plan } from "@/lib/content";
+import { plans, type Plan, type IdealForLevel } from "@/lib/content";
 
 export const metadata = { title: "Planes" };
 
@@ -65,23 +65,27 @@ function PlanCard({ plan: p, index: i }: { plan: Plan; index: number }) {
       {/* Right: details + CTA */}
       <div className="flex flex-col gap-8 p-8 md:p-10">
         {/* Ideal si */}
-        <div>
-          <SectionTitle title="Ideal si:" />
-          <div className="mt-5">
-            {p.idealFor.map((item) => (
-              <div key={item} className="flex items-center gap-4 py-2">
-                <CheckCircle />
-                <p className="text-sm text-white/80">{item}</p>
-              </div>
-            ))}
+        {p.idealForLevels ? (
+          <IdealForLevelSection levels={p.idealForLevels} />
+        ) : (
+          <div>
+            <SectionTitle title="Ideal si:" />
+            <div className="mt-5 divide-y divide-white/5">
+              {p.idealFor.map((item) => (
+                <div key={item} className="flex items-center gap-4 py-4">
+                  <CheckCircle />
+                  <p className="text-sm text-white/80">{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Este plan incluye */}
         <div className="border border-white/10 bg-brand-ink/60 p-5">
           <SectionTitle title="Este plan incluye:" />
           <div className="mt-5 divide-y divide-white/5">
-            {p.includes.map((item, idx) => (
+            {p.includes.map((item) => (
               <div key={item} className="flex items-start gap-4 py-4">
                 <IncludeIcon text={item} />
                 <p className="pt-1.5 text-sm leading-relaxed text-white/80">{item}</p>
@@ -108,7 +112,7 @@ function PlanCard({ plan: p, index: i }: { plan: Plan; index: number }) {
         {/* CTA */}
         <div className="mt-auto pt-2">
           <Link
-            href={`/contacto?plan=${p.slug}`}
+            href="/como-empezar"
             className="flex w-full items-center justify-center gap-3 bg-brand-red py-4 text-sm font-semibold uppercase tracking-widest text-white transition-colors hover:bg-[#a01d1b]"
           >
             Quiero este plan
@@ -117,6 +121,43 @@ function PlanCard({ plan: p, index: i }: { plan: Plan; index: number }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function IdealForLevelSection({ levels }: { levels: IdealForLevel[] }) {
+  return (
+    <div>
+      <SectionTitle title="Ideal si:" />
+      <div className="mt-5 divide-y divide-white/5">
+        {levels.map((level) => (
+          <div key={level.title} className="flex items-start gap-4 py-5 first:pt-0">
+            <CheckCircle />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-white">
+                {level.title}
+              </p>
+              <div className="mt-2 space-y-2">
+                {level.paragraphs.map((para) => (
+                  <p key={para} className="text-sm leading-relaxed text-white/80">
+                    {para}
+                  </p>
+                ))}
+              </div>
+              {level.requirements.length > 0 && (
+                <ul className="mt-3 space-y-1.5">
+                  {level.requirements.map((r) => (
+                    <li key={r} className="flex items-center gap-2 text-sm text-white/70">
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-white/40" aria-hidden="true" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

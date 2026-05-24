@@ -111,7 +111,6 @@ function Pillars() {
 }
 
 function PlansPreview() {
-  const featured = plans.slice(0, 3);
   return (
     <section className="border-b border-white/5">
       <div className="container-x py-20">
@@ -126,11 +125,11 @@ function PlansPreview() {
             href="/planes"
             className="hidden text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white sm:block"
           >
-            Ver todos →
+            Ver detalle →
           </Link>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {featured.map((p) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {plans.map((p) => (
             <Link
               key={p.slug}
               href={`/planes#${p.slug}`}

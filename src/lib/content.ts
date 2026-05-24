@@ -7,6 +7,12 @@ export const contact = {
   email: "innerdriveprogram@gmail.com",
 };
 
+export type IdealForLevel = {
+  title: string;
+  paragraphs: string[];
+  requirements: string[];
+};
+
 export type Plan = {
   slug: string;
   name: string;
@@ -16,6 +22,7 @@ export type Plan = {
   daysPerWeek: string;
   description: string;
   idealFor: string[];
+  idealForLevels?: IdealForLevel[];
   includes: string[];
   precio: string;
 };
@@ -70,10 +77,10 @@ export const plans: Plan[] = [
   },
   {
     slug: "competitor-drive-1-1",
-    name: "Competitor Drive 1.1",
+    name: "Competitor 1:1",
     tagline: "Train with precision",
     level: "PARA TODOS",
-    focus: ["Plan a medida", "Feedback semanal", "Video review"],
+    focus: ["PLAN A MEDIDA", "FEEDBACK", "SEGUIMIENTO"],
     daysPerWeek: "A medida",
     description:
       "Este es nuestro plan más completo, pensado para quienes necesitan un entrenamiento hecho a su medida. Sea cual sea tu objetivo nos adaptamos a lo que necesites.",
@@ -101,15 +108,40 @@ export const plans: Plan[] = [
     daysPerWeek: "3 días",
     description:
       "Plan enfocado en mejorar tus movimientos gimnásticos. Incluye 3 días de entrenamiento, 2 niveles según experiencia.",
-    idealFor: [
-      "Nivel 1: Para atletas que aún no tienen todos los movimientos gimnásticos y quieren incorporarlos. Trabajaremos fuerza específica y progresiones técnicas para lograr mayor fluidez y volúmen. Recomendamos los siguientes movimientos como requisitos mínimos: strict pull up, butterfly pull up. handstand hold (contra la pared) toes to bar",
-      "Nivel 2: Para atletas que ya realizan todos los movimientos gimnásticos y quieren mejorar su rendimiento dentro de un workout. Recomendamos los siguientes movimientos como requisitos mínimos: strict pull up, butterfly pull up handstand walk (al menos 3mts) toes to bar muscle up "
+    idealFor: [],
+    idealForLevels: [
+      {
+        title: "Nivel 1",
+        paragraphs: [
+          "Para atletas que aún no tienen todos los movimientos gimnásticos y quieren incorporarlos.",
+          "Trabajaremos fuerza específica y progresiones técnicas para lograr mayor fluidez y volúmen.",
+          "Recomendamos los siguientes movimientos como requisitos mínimos:",
+        ],
+        requirements: [
+          "strict pull up, butterfly pull up",
+          "handstand hold (contra la pared)",
+          "toes to bar",
+        ],
+      },
+      {
+        title: "Nivel 2",
+        paragraphs: [
+          "Para atletas que ya realizan todos los movimientos gimnásticos y quieren mejorar su rendimiento dentro de un workout.",
+          "Recomendamos los siguientes movimientos como requisitos mínimos:",
+        ],
+        requirements: [
+          "strict pull up, butterfly pull up",
+          "handstand walk (al menos 3mts)",
+          "toes to bar",
+          "muscle up",
+        ],
+      },
     ],
     includes: [
       "Acceso a videos explicativos.",
       "Consultas generales dentro de la app.",
     ],
-    precio: "36.000ars / 25usd"
+    precio: "36.000 ARS / 25 USD"
   },
   {
     slug: "gymnastics-1-1",

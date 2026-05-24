@@ -11,57 +11,53 @@ export default function OgImage() {
       <div
         style={{
           background: "#0d0d0f",
-          width: "100%",
-          height: "100%",
+          width: 1200,
+          height: 630,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-end",
-          padding: "72px 80px",
+          justifyContent: "center",
+          padding: "80px 96px",
           fontFamily: "sans-serif",
         }}
       >
+        {/* IN monogram + wordmark */}
+        <div style={{ display: "flex", alignItems: "center", gap: 28, marginBottom: 36 }}>
+          <svg width="52" height="52" viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#0d0d0f" />
+            <rect x="7" y="15" width="13" height="70" fill="#ffffff" />
+            <polygon points="24,85 90,15 90,85" fill="#ffffff" />
+          </svg>
+          <span
+            style={{
+              fontSize: 68,
+              fontWeight: 800,
+              color: "#ffffff",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              lineHeight: 1,
+            }}
+          >
+            INNER DRIVE
+          </span>
+        </div>
+
+        {/* Red accent */}
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: 480,
-            height: 480,
-            borderRadius: "50%",
-            background: "rgba(220,38,38,0.15)",
-            filter: "blur(80px)",
+            width: 56,
+            height: 3,
+            background: "#dc2626",
+            marginBottom: 28,
           }}
         />
+
+        {/* Tagline */}
         <p
           style={{
-            fontSize: 14,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#ef4444",
+            fontSize: 24,
+            color: "rgba(255,255,255,0.55)",
             margin: 0,
-            marginBottom: 24,
-          }}
-        >
-          Inner Drive
-        </p>
-        <p
-          style={{
-            fontSize: 72,
-            fontWeight: 700,
-            textTransform: "uppercase",
-            color: "#ffffff",
-            lineHeight: 0.95,
-            margin: 0,
-            marginBottom: 32,
-          }}
-        >
-          Base sólida.{"\n"}Resultado real.
-        </p>
-        <p
-          style={{
-            fontSize: 22,
-            color: "rgba(255,255,255,0.6)",
-            margin: 0,
+            letterSpacing: "0.02em",
           }}
         >
           Programación online para atletas de CrossFit y fitness competitivo.

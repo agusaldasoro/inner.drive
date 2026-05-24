@@ -83,7 +83,7 @@ function PlanCard({ plan: p, index: i }: { plan: Plan; index: number }) {
           <div className="mt-5 divide-y divide-white/5">
             {p.includes.map((item, idx) => (
               <div key={item} className="flex items-start gap-4 py-4">
-                <IncludeIcon index={idx} />
+                <IncludeIcon text={item} />
                 <p className="pt-1.5 text-sm leading-relaxed text-white/80">{item}</p>
               </div>
             ))}
@@ -159,13 +159,20 @@ function CheckCircle() {
   );
 }
 
-function IncludeIcon({ index }: { index: number }) {
+function IncludeIcon({ text }: { text: string }) {
+  const t = text.toLowerCase();
+  let icon: React.ReactNode;
+  if (t.includes("whatsapp")) icon = <WhatsAppIcon />;
+  else if (t.includes("videollamada")) icon = <VideoCallIcon />;
+  else if (t.includes("clasificatorio") || t.includes("acompañamiento")) icon = <TrophyIcon />;
+  else if (t.includes("video")) icon = <PlayIcon />;
+  else icon = <ChatIcon />;
   return (
     <span
       aria-hidden="true"
       className="flex h-8 w-8 shrink-0 items-center justify-center border border-white/10 bg-white/[0.04] text-white/40"
     >
-      {index === 0 ? <PlayIcon /> : <ChatIcon />}
+      {icon}
     </span>
   );
 }
@@ -221,8 +228,8 @@ function PriceIcon() {
 
 function PlayIcon() {
   return (
-    <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" aria-hidden="true">
-      <path d="M2 1.5v8l7-4-7-4z" />
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M5 3l14 9-14 9V3z" />
     </svg>
   );
 }
@@ -230,17 +237,74 @@ function PlayIcon() {
 function ChatIcon() {
   return (
     <svg
-      width="11"
-      height="11"
-      viewBox="0 0 11 11"
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinejoin="round"
+      strokeWidth="2"
       strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M1 1h9v6.5H3.5L1 10V1z" />
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 21l1.9-5.7A8.5 8.5 0 1 1 7.7 19.1z" />
+    </svg>
+  );
+}
+
+function TrophyIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M8 21h8M12 17v4M17 3H7l1 8a4 4 0 0 0 8 0l1-8" />
+      <path d="M7 3H4v3a3 3 0 0 0 3 3" />
+      <path d="M17 3h3v3a3 3 0 0 0-3 3" />
+    </svg>
+  );
+}
+
+function VideoCallIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polygon points="23 7 16 12 23 17 23 7" />
+      <rect x="1" y="5" width="15" height="14" rx="2" />
     </svg>
   );
 }

@@ -31,7 +31,12 @@ export default function PlanesPage() {
                   <h2 className="mt-3 font-display text-3xl uppercase tracking-wider">
                     {p.name}
                   </h2>
-                  <p className="mt-2 text-sm text-white/70">{p.tagline}</p>
+                  <div>
+                    <p className="mt-2 text-sm text-white/70">{p.tagline}</p>
+                  </div>
+                  <div>
+                    <p className="mt-2 text-sm text-white/80">{p.description}</p>
+                  </div>
                 </div>
                 <dl className="grid grid-cols-2 gap-4 text-xs">
                   <div>
@@ -42,15 +47,27 @@ export default function PlanesPage() {
                     <dt className="uppercase tracking-widest text-white/40">Frecuencia</dt>
                     <dd className="mt-1 text-white/90">{p.daysPerWeek}</dd>
                   </div>
+                  <div>
+                  {p.precio && (
+                    <div className="col-span-2">
+                      <dt className="uppercase tracking-widest text-white/40">Precio</dt>
+                      <dd className="mt-1 text-white/90">{p.precio}</dd>
+                    </div>
+                  )}
+                </div>
                 </dl>
               </div>
               <div className="flex flex-col justify-between gap-6">
-                <p className="text-white/80">{p.description}</p>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-white/40">
-                    Focos del plan
-                  </p>
+                  <div>
+                    <dt className="uppercase tracking-widest text-white/40">Ideal si:</dt>
+                    <dd className="mt-1 text-white/90" dangerouslySetInnerHTML={{ __html: p.ideal || "" }} />
+                  </div>
+                  <div>
+                    <dt className="uppercase tracking-widest text-white/40">Este plan incluye:</dt>
+                    <dd className="mt-1 text-white/90" dangerouslySetInnerHTML={{ __html: p.incluye || "" }} />
+                  </div>
                   <div className="mt-3 flex flex-wrap gap-2">
+                    <p className="text-xs uppercase tracking-widest text-white/40"> Focos del plan </p>
                     {p.focus.map((f) => (
                       <span
                         key={f}
@@ -60,7 +77,6 @@ export default function PlanesPage() {
                       </span>
                     ))}
                   </div>
-                </div>
                 <div>
                   <Link
                     href={`/contacto?plan=${p.slug}`}

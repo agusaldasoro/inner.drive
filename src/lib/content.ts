@@ -11,10 +11,13 @@ export type Plan = {
   slug: string;
   name: string;
   tagline: string;
-  level: "Iniciado" | "Intermedio" | "Avanzado" | "Competidor" | "Especialidad";
+  level: string;
   focus: string[];
   daysPerWeek: string;
   description: string;
+  ideal?: string;
+  incluye?: string;
+  precio?: string;
 };
 
 export type Coach = {
@@ -28,12 +31,14 @@ export const plans: Plan[] = [
   {
     slug: "competitor-drive",
     name: "Competitor Drive",
-    tagline: "Programación para competir.",
-    level: "Competidor",
-    focus: ["Fuerza", "Metcon", "Skill"],
-    daysPerWeek: "5–6 días",
-    description:
-      "Plan para atletas con experiencia en competencia. Trabajo de fuerza máxima, capacidad metabólica y skill específico para mejorar tu rendimiento en open, semifinales y sanctionals.",
+    tagline: "Train with purpose",
+    description: "Pensado para quienes se toman su entrenamiento en serio y buscan seguir progresando de forma equilibrada.",   
+    level: "Intermedio - Rx",
+    daysPerWeek: "5 días de entrenamiento + 1 día opcional de descanso activo",
+    ideal: "<ul> <li>Querés entrenar por tu cuenta</li> <li>No necesitás correcciones técnicas</li> <li>Competís o tenés intenciones de competir a futuro</li> </ul>",
+    incluye: "<ul> <li>Videos de ejercicios, explicación de los bloques de entrenamiento y sugerencias para tus wods.</li> <li>Respuestas a tus consultas dentro de la aplicación. </li> </ul>",
+    focus: ["GIMNÁSTICOS", "FUERZA", "METCON"],
+    precio: "43.500ars / 30usd",
   },
   {
     slug: "competitor-drive-plus",

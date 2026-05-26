@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { contact } from "@/lib/content";
+import WodUpInstructions from "@/components/WodUpInstructions";
 
 export const metadata = { title: "Cómo empezar" };
 
@@ -70,12 +71,13 @@ export default function ComoEmpezarPage() {
             </ul>
           </Step>
 
-          <Step n="04" title="Descargá WodUp">
+          <Step n="04" title="Instalá WodUp">
             <p className="text-sm text-white/80">
-              Descargá la aplicación{" "}
-              <span className="font-semibold text-white">WodUp</span>{" "}
-              donde vas a encontrar toda tu planificación.
+              WodUp es la plataforma donde vas a encontrar toda tu planificación. Elegí tu dispositivo:
             </p>
+            <div className="mt-5">
+              <WodUpInstructions />
+            </div>
           </Step>
 
           <Step n="05" title="¿Tenés dudas?">

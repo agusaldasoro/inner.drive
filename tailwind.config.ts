@@ -8,6 +8,7 @@ export default {
         brand: {
           red: "#8B1816",
           "red-dim": "#5A0F0E",
+          "red-link": "#ef4444",
           ink: "#0A0A0A",
           panel: "#111111",
           line: "#1f1f1f",

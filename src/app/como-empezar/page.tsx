@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { contact } from "@/lib/content";
+import WodUpInstructions from "@/components/WodUpInstructions";
 
 export const metadata = { title: "Cómo empezar" };
 
@@ -24,7 +25,7 @@ export default function ComoEmpezarPage() {
             <div className="mt-5">
               <Link
                 href="/planes"
-                className="text-xs font-semibold uppercase tracking-widest text-brand-red transition-colors hover:text-white"
+                className="text-xs font-semibold uppercase tracking-widest text-brand-red-link transition-colors hover:text-white"
               >
                 Ver planes →
               </Link>
@@ -52,7 +53,7 @@ export default function ComoEmpezarPage() {
               Escribinos a{" "}
               <a
                 href={`mailto:${contact.email}`}
-                className="text-brand-red transition-colors hover:underline"
+                className="text-brand-red-link transition-colors hover:underline"
               >
                 {contact.email}
               </a>{" "}
@@ -70,12 +71,13 @@ export default function ComoEmpezarPage() {
             </ul>
           </Step>
 
-          <Step n="04" title="Descargá WodUp">
+          <Step n="04" title="Instalá WodUp">
             <p className="text-sm text-white/80">
-              Descargá la aplicación{" "}
-              <span className="font-semibold text-white">WodUp</span>{" "}
-              donde vas a encontrar toda tu planificación.
+              WodUp es la plataforma donde vas a encontrar toda tu planificación. Elegí tu dispositivo:
             </p>
+            <div className="mt-5">
+              <WodUpInstructions />
+            </div>
           </Step>
 
           <Step n="05" title="¿Tenés dudas?">
@@ -86,7 +88,7 @@ export default function ComoEmpezarPage() {
                 href={contact.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="text-brand-red transition-colors hover:underline"
+                className="text-brand-red-link transition-colors hover:underline"
               >
                 {contact.instagramHandle}
               </a>{" "}

@@ -23,22 +23,22 @@ export async function POST(req: Request) {
     );
   }
 
-  try {
-    await resend.emails.send({
-      from: "Inner Drive <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL!,
-      replyTo: String(email),
-      subject: `Nueva consulta de ${name}`,
-      text: [
-        `Nombre: ${name}`,
-        `Email: ${email}`,
-        `Plan: ${plan || "No especificado"}`,
-        ``,
-        `Mensaje:`,
-        String(message),
-      ].join("\n"),
-    });
-  } catch {
+  const { error } = await resend.emails.send({
+    from: "Inner Drive <onboarding@resend.dev>",
+    to: process.env.CONTACT_EMAIL!,
+    replyTo: String(email),
+    subject: `Nueva consulta de ${name}`,
+    text: [
+      `Nombre: ${name}`,
+      `Email: ${email}`,
+      `Plan: ${plan || "No especificado"}`,
+      ``,
+      `Mensaje:`,
+      String(message),
+    ].join("\n"),
+  });
+
+  if (error) {
     return NextResponse.json({ ok: false, error: "Email send failed" }, { status: 500 });
   }
 

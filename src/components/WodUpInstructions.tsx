@@ -39,7 +39,7 @@ export default function WodUpInstructions() {
               href="https://www.wodup.com/signup/athlete"
               target="_blank"
               rel="noreferrer"
-              className="text-brand-red transition-colors hover:underline"
+              className="text-brand-red-link transition-colors hover:underline"
             >
               wodup.com/signup →
             </a>
@@ -53,7 +53,7 @@ export default function WodUpInstructions() {
               href="https://apps.apple.com/es/app/wodup/id1407715516"
               target="_blank"
               rel="noreferrer"
-              className="text-brand-red transition-colors hover:underline"
+              className="text-brand-red-link transition-colors hover:underline"
             >
               WodUp en App Store →
             </a>
@@ -74,7 +74,7 @@ export default function WodUpInstructions() {
                     href="https://www.wodup.com/signup/athlete"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-brand-red transition-colors hover:underline"
+                    className="text-brand-red-link transition-colors hover:underline"
                   >
                     wodup.com/signup
                   </a>

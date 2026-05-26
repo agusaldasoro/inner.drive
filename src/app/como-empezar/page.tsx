@@ -25,7 +25,7 @@ export default function ComoEmpezarPage() {
             <div className="mt-5">
               <Link
                 href="/planes"
-                className="text-xs font-semibold uppercase tracking-widest text-brand-red transition-colors hover:text-white"
+                className="text-xs font-semibold uppercase tracking-widest text-brand-red-link transition-colors hover:text-white"
               >
                 Ver planes →
               </Link>
@@ -53,7 +53,7 @@ export default function ComoEmpezarPage() {
               Escribinos a{" "}
               <a
                 href={`mailto:${contact.email}`}
-                className="text-brand-red transition-colors hover:underline"
+                className="text-brand-red-link transition-colors hover:underline"
               >
                 {contact.email}
               </a>{" "}
@@ -88,7 +88,7 @@ export default function ComoEmpezarPage() {
                 href={contact.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="text-brand-red transition-colors hover:underline"
+                className="text-brand-red-link transition-colors hover:underline"
               >
                 {contact.instagramHandle}
               </a>{" "}

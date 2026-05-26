@@ -47,7 +47,7 @@ function Row({
         {label}
       </span>
       {href ? (
-        <a href={href} target="_blank" rel="noreferrer" className="hover:text-brand-red">
+        <a href={href} target="_blank" rel="noreferrer" className="hover:text-brand-red-link">
           {value}
         </a>
       ) : (

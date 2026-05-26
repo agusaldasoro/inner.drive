@@ -17,9 +17,9 @@ export default function Footer() {
             Navegación
           </h4>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
-            <li><Link href="/planes" className="hover:text-brand-red">Planes</Link></li>
-            <li><Link href="/quienes-somos" className="hover:text-brand-red">Quiénes somos</Link></li>
-            <li><Link href="/como-empezar" className="hover:text-brand-red">Cómo empezar</Link></li>
+            <li><Link href="/planes" className="hover:text-brand-red-link">Planes</Link></li>
+            <li><Link href="/quienes-somos" className="hover:text-brand-red-link">Quiénes somos</Link></li>
+            <li><Link href="/como-empezar" className="hover:text-brand-red-link">Cómo empezar</Link></li>
           </ul>
         </div>
         <div>
@@ -32,13 +32,13 @@ export default function Footer() {
                 href={contact.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-brand-red"
+                className="hover:text-brand-red-link"
               >
                 Instagram · {contact.instagramHandle}
               </a>
             </li>
             <li>
-              <a href={`mailto:${contact.email}`} className="hover:text-brand-red">
+              <a href={`mailto:${contact.email}`} className="hover:text-brand-red-link">
                 {contact.email}
               </a>
             </li>

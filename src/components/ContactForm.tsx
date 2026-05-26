@@ -26,8 +26,8 @@ export default function ContactForm({ plans }: { plans: PlanOption[] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      setStatus(res.ok ? "ok" : "error");
-      if (res.ok) form.reset();
+      setStatus(res.status === 200 ? "ok" : "error");
+      if (res.status === 200) form.reset();
     } catch {
       setStatus("error");
     }
